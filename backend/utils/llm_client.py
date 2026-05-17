@@ -63,7 +63,7 @@ class LLMClient:
             "max_tokens": 4000,
         }
 
-        # Mode JSON structuré — garanti que la réponse est du JSON valide
+        # Mode JSON structuré garanti que la réponse est du JSON valide
         if expect_json:
             kwargs["response_format"] = {"type": "json_object"}
 

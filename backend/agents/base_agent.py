@@ -42,7 +42,7 @@ class BaseAgent(ABC):
         self.llm = LLMClient()
         self.logger = logging.getLogger(f"systemreq.{name}")
 
-    # ── Interface obligatoire ─────────────────────────────────────────────────
+    # Interface obligatoire 
 
     @abstractmethod
     async def run(self, session_id: str, payload: dict) -> dict:
@@ -58,7 +58,7 @@ class BaseAgent(ABC):
         """
         pass
 
-    # ── Méthodes utilitaires ──────────────────────────────────────────────────
+    # Méthodes utilitaires
 
     async def ask_llm(self, system_prompt: str, user_message: str) -> dict:
         """
@@ -104,7 +104,7 @@ class BaseAgent(ABC):
             self.logger.warning(full_msg)
         else:
             self.logger.info(full_msg)
-        # Affiche aussi dans la console pendant le développement
+        # Affiche dans la console  développement
         print(full_msg)
 
     def build_error_response(self, error_msg: str, session_id: str) -> dict:
