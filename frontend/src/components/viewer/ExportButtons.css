@@ -1,0 +1,53 @@
+/* components/viewer/ExportButtons.css */
+
+.export-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-export {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-export:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-export:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-docx {
+  background: #1b4f8a;
+  color: #fff;
+}
+
+.btn-docx:hover:not(:disabled) {
+  background: #143d6e;
+}
+
+.btn-pdf {
+  background: #c53030;
+  color: #fff;
+}
+
+.btn-pdf:hover:not(:disabled) {
+  background: #9b2c2c;
+}
+
+.export-error {
+  font-size: 12px;
+  color: #c53030;
+  margin: 0;
+}

@@ -1,0 +1,280 @@
+/* components/viewer/CDCViewer.css */
+
+.cdc-viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Statistiques ─────────────────────────────────────────────────────────── */
+.cdc-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.stat-card {
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-card.total   { background: #eef4fc; }
+.stat-card.haute   { background: #fff0f0; }
+.stat-card.moyenne { background: #fffbea; }
+.stat-card.basse   { background: #f0fdf4; }
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-card.total   .stat-number { color: #1b4f8a; }
+.stat-card.haute   .stat-number { color: #c53030; }
+.stat-card.moyenne .stat-number { color: #b7791f; }
+.stat-card.basse   .stat-number { color: #276749; }
+
+.stat-label {
+  font-size: 12px;
+  color: #888;
+  font-weight: 500;
+}
+
+/* ── Résumé ───────────────────────────────────────────────────────────────── */
+.cdc-summary {
+  background: #f7f9fc;
+  border-left: 3px solid #1b4f8a;
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+}
+
+.summary-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1b4f8a;
+  margin-bottom: 6px;
+}
+
+.summary-text {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Corps principal ──────────────────────────────────────────────────────── */
+.cdc-body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 1.25rem;
+  min-height: 500px;
+}
+
+/* Sidebar */
+.cdc-sidebar {
+  background: #fff;
+  border: 1px solid #e8e8e4;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: fit-content;
+  position: sticky;
+  top: 70px;
+}
+
+.sidebar-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #aaa;
+  margin: 0 0 8px 4px;
+}
+
+.sidebar-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 12.5px;
+  color: #555;
+  cursor: pointer;
+  line-height: 1.4;
+  font-family: inherit;
+  transition: background 0.12s, color 0.12s;
+}
+
+.sidebar-item:hover {
+  background: #f0f0ec;
+  color: #1a1a1a;
+}
+
+.sidebar-item.active {
+  background: #eef4fc;
+  color: #1b4f8a;
+  font-weight: 500;
+}
+
+.sidebar-divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 8px 0;
+}
+
+/* Contenu section */
+.cdc-content {
+  background: #fff;
+  border: 1px solid #e8e8e4;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.section-panel {}
+
+.section-title {
+  font-size: 20px;
+  color: #1b4f8a;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #eef4fc;
+}
+
+.section-content p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+}
+
+.no-section {
+  color: #aaa;
+  font-size: 14px;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* ── Tableau des exigences ────────────────────────────────────────────────── */
+.req-table-wrap {
+  overflow-x: auto;
+}
+
+.req-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.req-table th {
+  background: #1b4f8a;
+  color: #fff;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.req-table th:first-child { border-radius: 6px 0 0 0; }
+.req-table th:last-child  { border-radius: 0 6px 0 0; }
+
+.req-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0f0ec;
+  vertical-align: top;
+  color: #333;
+}
+
+.req-table tr:nth-child(even) td {
+  background: #fafaf8;
+}
+
+.req-table tr:hover td {
+  background: #eef4fc;
+}
+
+.req-id {
+  font-family: monospace;
+  font-size: 12px;
+  color: #1b4f8a;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.req-desc { line-height: 1.5; }
+.req-cat  { color: #666; font-size: 12px; }
+.req-moscow { font-size: 12px; color: #888; }
+
+/* Badges priorité */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-haute   { background: #fff0f0; color: #c53030; }
+.badge-moyenne { background: #fffbea; color: #b7791f; }
+.badge-basse   { background: #f0fdf4; color: #276749; }
+
+/* ── Questions ────────────────────────────────────────────────────────────── */
+.cdc-questions {
+  background: #fffbea;
+  border: 1px solid #f6e05e;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+
+.questions-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #b7791f;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.questions-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.questions-list li {
+  font-size: 13px;
+  color: #744210;
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.questions-list li::before {
+  content: "?";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: #b7791f;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cdc-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cdc-body {
+    grid-template-columns: 1fr;
+  }
+  .cdc-sidebar {
+    position: static;
+  }
+}
