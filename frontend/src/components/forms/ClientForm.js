@@ -231,7 +231,7 @@ export default function ClientForm({ onSessionStarted }) {
       {error && <p className="form-error">{error}</p>}
 
       {/* Submit */}
-      <button type="submit" className="btn-submit" disabled={loading}>
+      <button type="submit" className="btn btn-primary" style={{width:"100%", marginTop:"0.5rem"}} disabled={loading}>
         {loading ? "Analyse en cours…" : "Générer le cahier des charges"}
       </button>
 
