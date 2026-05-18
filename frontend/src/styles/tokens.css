@@ -51,7 +51,7 @@
   --grad-text   : linear-gradient(135deg, var(--white), var(--blue-300));
   --grad-surface: linear-gradient(135deg, var(--night-800), var(--night-700));
 
-  --font-display: 'Syne', sans-serif;
+  --font-display: 'Inter', sans-serif;
   --font-body   : 'DM Sans', sans-serif;
   --font-mono   : 'JetBrains Mono', monospace;
 
