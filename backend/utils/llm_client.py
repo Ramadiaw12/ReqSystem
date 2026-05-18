@@ -1,16 +1,9 @@
 """
 utils/llm_client.py — Client OpenAI centralisé pour SystemReq
-
-Ce module expose une seule classe LLMClient utilisée par les 3 agents.
-Avantages :
-  - La clé API et le modèle sont configurés en un seul endroit
-  - On peut facilement changer de modèle (ex: gpt-4o-mini pour tests)
-  - Gestion des erreurs et du logging centralisés
 """
 
 import json
 import logging
-from typing import Optional
 from openai import AsyncOpenAI
 from config import settings
 
@@ -18,19 +11,11 @@ logger = logging.getLogger(__name__)
 
 
 class LLMClient:
-    """
-    Client OpenAI asynchrone partagé par tous les agents de SystemReq.
-
-    Usage dans un agent :
-        response = await self.llm.chat(
-            system_prompt="Tu es un expert...",
-            user_message="Voici les besoins du client : ...",
-        )
-    """
+    """Client OpenAI asynchrone partagé par tous les agents."""
 
     def __init__(self):
         self.client = AsyncOpenAI(api_key=settings.openai_api_key)
-        self.model = settings.openai_model
+        self.model  = settings.openai_model
 
     async def chat(
         self,
@@ -38,20 +23,9 @@ class LLMClient:
         user_message: str,
         temperature: float = 0.3,
         expect_json: bool = True,
+        max_tokens: int = 4000,
     ) -> str:
-        """
-        Envoie un message au modèle et retourne la réponse en texte brut.
-
-        Args:
-            system_prompt : instructions de rôle pour le modèle
-            user_message  : contenu envoyé par l'agent
-            temperature   : 0.0 = déterministe, 1.0 = créatif
-            expect_json   : si True, force le mode JSON (response_format)
-
-        Returns:
-            str : réponse brute du modèle (JSON string ou texte libre)
-        """
-        logger.info(f"[LLMClient] Appel modèle={self.model} temp={temperature}")
+        logger.info(f"[LLMClient] Appel modèle={self.model} temp={temperature} max_tokens={max_tokens}")
 
         kwargs = {
             "model": self.model,
@@ -60,15 +34,14 @@ class LLMClient:
                 {"role": "user",   "content": user_message},
             ],
             "temperature": temperature,
-            "max_tokens": 4000,
+            "max_tokens": max_tokens,
         }
 
-        # Mode JSON structuré garanti que la réponse est du JSON valide
         if expect_json:
             kwargs["response_format"] = {"type": "json_object"}
 
         response = await self.client.chat.completions.create(**kwargs)
-        content = response.choices[0].message.content
+        content  = response.choices[0].message.content
 
         logger.info(f"[LLMClient] Réponse reçue ({len(content)} caractères)")
         return content
@@ -78,17 +51,17 @@ class LLMClient:
         system_prompt: str,
         user_message: str,
         temperature: float = 0.3,
+        max_tokens: int = 4000,
     ) -> dict:
-        """
-        Variante de chat() qui parse automatiquement la réponse en dict Python.
-
-        Returns:
-            dict : réponse JSON parsée, ou dict avec clé 'error' en cas d'échec
-        """
-        raw = await self.chat(system_prompt, user_message, temperature, expect_json=True)
+        """Appel qui parse automatiquement la réponse en dict Python."""
+        raw = await self.chat(
+            system_prompt, user_message,
+            temperature=temperature,
+            expect_json=True,
+            max_tokens=max_tokens,
+        )
         try:
             return json.loads(raw)
         except json.JSONDecodeError as e:
             logger.error(f"[LLMClient] Erreur parsing JSON : {e}")
-            logger.error(f"[LLMClient] Réponse brute : {raw[:300]}")
             return {"error": "parsing_failed", "raw": raw}
