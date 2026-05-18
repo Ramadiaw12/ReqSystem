@@ -144,8 +144,15 @@ def render_section_content(content: str, S: dict) -> list:
             continue
 
         # Arborescence de fichiers
-        if any(c in stripped for c in ["├──", "└──", "│", "─"]):
-            elements.append(Paragraph(stripped, S["mono"]))
+        if any(c in stripped for c in ["├──", "└──", "│", "─", "|--", "+--"]):
+            clean = stripped
+            clean = clean.replace("├──", "  |--")
+            clean = clean.replace("└──", "  +--")
+            clean = clean.replace("│",   "  |  ")
+            clean = clean.replace("├",   "  |--")
+            clean = clean.replace("└",   "  +--")
+            clean = clean.replace("─",   "-")
+            elements.append(Paragraph(clean, S["mono"]))
 
         # Workflow ASCII
         elif stripped.startswith("|") or "→" in stripped or "↓" in stripped or stripped.startswith("START") or stripped.startswith("END"):
