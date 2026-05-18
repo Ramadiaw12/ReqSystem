@@ -78,6 +78,10 @@ def make_styles():
             "cell_center_white", fontName="Helvetica-Bold", fontSize=9,
             textColor=WHITE, leading=12, alignment=TA_CENTER,
         ),
+        "cell_center_white": ParagraphStyle(
+            "cell_center_white", fontName="Helvetica-Bold", fontSize=9,
+            textColor=WHITE, leading=12, alignment=TA_CENTER,
+        ),
         "cell_center": ParagraphStyle(
             "cell_center", fontName="Helvetica", fontSize=8.5,
             textColor=MED_GRAY, leading=12, alignment=TA_CENTER,
