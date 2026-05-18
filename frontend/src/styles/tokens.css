@@ -1,0 +1,89 @@
+/* ═══════════════════════════════════════════════════════════════
+   styles/tokens.css — Palette SystemReq · Night × Blue × White
+   ═══════════════════════════════════════════════════════════════
+
+   NIGHT  → arrière-plans profonds
+   BLUE   → actions, accents, lumière
+   WHITE  → texte, surfaces claires
+   ─────────────────────────────── */
+
+:root {
+
+  /* ── NIGHT ─────────────────────────────────────────────────── */
+  --night-950: #010610;   /* fond absolu, le plus profond       */
+  --night-900: #020818;   /* fond principal                     */
+  --night-800: #040E24;   /* fond secondaire / cards            */
+  --night-700: #071530;   /* surfaces interactives              */
+  --night-600: #0C1E42;   /* borders, séparateurs               */
+  --night-500: #132554;   /* hover states nuit                  */
+
+  /* ── BLUE ───────────────────────────────────────────────────── */
+  --blue-50 : #E6F4FF;   /* teinte très claire (texte sur dark) */
+  --blue-100: #BAE0FF;   /* highlights légers                   */
+  --blue-200: #7EC8FF;   /* accents secondaires                 */
+  --blue-300: #38AEFF;   /* bleu brillant clair                 */
+  --blue-400: #0EA5FF;   /* PRIMARY — actions, CTA              */
+  --blue-500: #0088EE;   /* hover du primary                    */
+  --blue-600: #006DCC;   /* active / pressed                    */
+  --blue-700: #0055A0;   /* bordures fortes                     */
+  --blue-800: #003D75;   /* backgrounds colorés                 */
+  --blue-900: #002850;   /* accents foncés                      */
+
+  /* ── WHITE / TEXTE ──────────────────────────────────────────── */
+  --white    : #FFFFFF;
+  --text-100 : #F0F7FF;   /* texte principal sur fond nuit      */
+  --text-200 : #C8DCEE;   /* texte secondaire                   */
+  --text-300 : #8AACCA;   /* texte tertiaire / placeholders     */
+  --text-400 : #5580A0;   /* désactivé / hints                  */
+
+  /* ── SEMANTIC ────────────────────────────────────────────────── */
+  --success  : #22C55E;
+  --warning  : #F59E0B;
+  --danger   : #EF4444;
+  --info     : var(--blue-400);
+
+  /* ── SURFACES ────────────────────────────────────────────────── */
+  --surface-1: rgba(255,255,255,0.03);  /* card subtile           */
+  --surface-2: rgba(255,255,255,0.06);  /* card hover             */
+  --surface-3: rgba(14,165,255,0.07);   /* card accent bleue      */
+
+  /* ── BORDERS ─────────────────────────────────────────────────── */
+  --border-subtle : rgba(14,165,255,0.12);
+  --border-default: rgba(14,165,255,0.22);
+  --border-strong : rgba(14,165,255,0.45);
+  --border-glow   : rgba(14,165,255,0.70);
+
+  /* ── GLOWS ───────────────────────────────────────────────────── */
+  --glow-sm : 0 0 12px rgba(14,165,255,0.30);
+  --glow-md : 0 0 28px rgba(14,165,255,0.35);
+  --glow-lg : 0 0 55px rgba(14,165,255,0.30);
+  --glow-xl : 0 0 90px rgba(14,165,255,0.20);
+
+  /* ── SHADOWS ─────────────────────────────────────────────────── */
+  --shadow-sm : 0 2px 8px  rgba(0,0,0,0.40);
+  --shadow-md : 0 8px 24px rgba(0,0,0,0.50);
+  --shadow-lg : 0 20px 50px rgba(0,0,0,0.60);
+
+  /* ── GRADIENTS ───────────────────────────────────────────────── */
+  --grad-blue   : linear-gradient(135deg, var(--blue-400), var(--blue-600));
+  --grad-night  : linear-gradient(180deg, var(--night-900), var(--night-950));
+  --grad-text   : linear-gradient(135deg, var(--white), var(--blue-300));
+  --grad-surface: linear-gradient(135deg, var(--night-800), var(--night-700));
+
+  /* ── TYPOGRAPHY ──────────────────────────────────────────────── */
+  --font-display: 'Syne', sans-serif;
+  --font-body   : 'DM Sans', sans-serif;
+  --font-mono   : 'JetBrains Mono', monospace;
+
+  /* ── RADIUS ──────────────────────────────────────────────────── */
+  --radius-sm : 6px;
+  --radius-md : 10px;
+  --radius-lg : 14px;
+  --radius-xl : 20px;
+  --radius-full: 9999px;
+
+  /* ── TRANSITIONS ─────────────────────────────────────────────── */
+  --transition-fast  : 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow  : 0.4s ease;
+}
